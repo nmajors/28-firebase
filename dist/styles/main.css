@@ -11,7 +11,8 @@ body {
   background: linear-gradient(to bottom, #256c77 5%, #1e5a63 100%);
   min-height: 500px;
   width: 400px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-bottom: 40px; }
   .todoList .todoListTitle {
     padding-top: 30px;
     text-align: center; }
@@ -36,6 +37,6 @@ body {
     .todoList .addTodo .addTodoSubmit {
       float: right; }
   .todoList ul {
-    margin: 20px 15px;
+    margin: 20px 15px 0 15px;
     line-height: 1.2;
     font-size: 1.2rem; }

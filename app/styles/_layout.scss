@@ -38,6 +38,13 @@
     margin: 20px 15px 0 15px;
     line-height: 1.2;
     font-size: 1.2rem;
+    li{
+      margin-right: 25px;
+    }
+    li:hover{
+      background-color: #6fa0a8;
+      cursor: pointer;
+    }
   }
 
 }

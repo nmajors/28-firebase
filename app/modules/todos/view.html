@@ -1,0 +1,12 @@
+<div class = "todoList">
+  <h1 class = "todoListTitle">To Do List</h1>
+  <form class = "addTodo" ng-submit ="todosCtrl.addTodo()">
+    <input class = "addTodoTextbox" type="text" placeholder="What to do?" ng-model="todosCtrl.item">
+    <input class = "addTodoSubmit" type="submit" value="Add">
+  </form>
+
+  <ul>
+    <li ng-repeat="todo in todosCtrl.todos" ng-class="{'completed': todo.completed}"
+    ng-click="todosCtrl.toggleCompleted(todo)">{{ todo.item }}</li>
+  </ul>
+</div>

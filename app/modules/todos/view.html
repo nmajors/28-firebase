@@ -1,12 +1,32 @@
 <div class = "todoList">
+
+
+<div class="chooseView">
+
+    <input type="radio" id="radio1" name="viewSelector" ng-model="todosCtrl.changeView" value="viewCompleted">
+    <label for="radio1">View Completed</label>
+    <input type="radio" id="radio2" name="viewSelector" ng-model="todosCtrl.changeView" value="viewIncomplete">
+    <label for="radio2">View Incomplete</label>
+
+</div>
+
+<div class="viewList">
   <h1 class = "todoListTitle">To Do List</h1>
-  <form class = "addTodo" ng-submit ="todosCtrl.addTodo()">
-    <input class = "addTodoTextbox" type="text" placeholder="What to do?" ng-model="todosCtrl.item">
-    <input class = "addTodoSubmit" type="submit" value="Add">
+  <form class = "addTodo" ng-submit ="todosCtrl.addTodo()" ng-show="todosCtrl.changeView !== 'viewCompleted'" >
+    <input class = "addTodoInput" type="text" placeholder="What to do?" ng-model="todosCtrl.item">
+    <input class = "addTodoInput" id="addTodoSubmit" type="submit" value="Add">
   </form>
 
-  <ul>
-    <li ng-repeat="todo in todosCtrl.todos" ng-class="{'completed': todo.completed}"
+  <button type="button" name="Archive" ng-hide="todosCtrl.changeView === 'viewIncomplete'" ng-click="todosCtrl.archiveTodos()">Archive All</button>
+
+  <ul class="completedTodos"  ng-show="todosCtrl.changeView !== 'viewIncomplete'">
+    <li ng-repeat="todo in todosCtrl.todos" ng-show="todo.completed===true" ng-class="{'completed': todo.completed}"
     ng-click="todosCtrl.toggleCompleted(todo)">{{ todo.item }}</li>
   </ul>
+  <ul class="incompleteTodos" ng-show="todosCtrl.changeView !== 'viewCompleted'">
+    <li ng-repeat="todo in todosCtrl.todos" ng-show="todo.completed===false" ng-class="{'completed': todo.completed}"
+    ng-click="todosCtrl.toggleCompleted(todo)">{{ todo.item }}</li>
+  </ul>
+
+</div>
 </div>

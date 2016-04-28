@@ -1,17 +1,29 @@
 class TodosController {
   constructor($firebaseArray){
     let ref = new Firebase ("https://nms-todo.firebaseio.com/");
-    this.todos = $firebaseArray(ref);
+    this.lists = $firebaseArray(ref);
+    //this.items
     this.changeView = "viewIncomplete";
     // this.item="";
   }
 
   addTodo(){
-    this.todos.$add({
+  console.log(this.lists);
+  this.lists.forEach((list)=>{
+    this.list.$add({
       item: this.item,
       completed: false
     });
     this.item = "";
+    console.log(this.id);
+  })
+
+    this.list.$add({
+      item: this.item,
+      completed: false
+    });
+    this.item = "";
+    console.log(this.id);
   }
 
   toggleCompleted(todo){

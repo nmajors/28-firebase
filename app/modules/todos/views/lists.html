@@ -1,0 +1,18 @@
+<div class="todoList">
+  <h1>List Me UP</h1>
+
+
+  <form class = "addList" ng-submit ="listsCtrl.createList()" >
+    <input class = "addListTodo" type="text" placeholder="Name that list" ng-model="listsCtrl.name">
+    <input type="text" placeholder= "add todo to your list" ng-model="listsCtrl.items">
+    <input class = "addListTodo" type="submit" value="Create List">
+  </form>
+ <ul class="todoLists">
+   <li ng-repeat="list in listsCtrl.lists">{{list.name}}{{list.$id}}</li>
+
+ </ul>
+</div>
+<!-- <form class = "addList" ng-submit ="listsCtrl.createList()" >
+  <input class = "addTodoList"        type="text" placeholder="What to do?" ng-model="list in listsCtrl.lists">
+  <input class = "addTodoList"  type="submit" value="Add New List">
+</form> -->

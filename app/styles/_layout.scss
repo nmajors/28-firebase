@@ -25,14 +25,18 @@
       position: relative;
       top: 50%;
       left: 50%;
-      margin-top: -15px;
-      margin-left: -60px;
+      transform: translate(-50%, -50%);
       background: linear-gradient(to bottom, #afd5e0 5%, #6fa0a8 100%);
+    }
+
+    #archiveTodos{
+      margin-top: 15px;
+      width: 140px;
+      height: 30px;
     }
     .addTodo {
       width: 90%;
-      margin: 0 10%;
-      display: inline-block;
+      margin-left: 12%;
       ::-webkit-input-placeholder {
         color: #ccc;
       }
@@ -56,16 +60,54 @@
     // }
   }
   ul {
-    margin: 20px 15px 0;
-    line-height: 1.2;
-    font-size: 1.2rem;
+    margin: 20px auto;
+    // line-height: 1.2;
+
     text-align: left;
+    list-style-type: none;
     li {
-      margin-right: 25px;
+      margin-right: 55px;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #6fa0a8;
+      line-height: 1.5;
+      padding-left: 15px;
+      // margin-left: -15px;
+      i{
+        padding-right: 15px;
+      }
     }
     li:hover {
       background-color: #6fa0a8;
       cursor: pointer;
     }
   }
+  .completedTodos{
+    margin-top: 0;
+  }
 }
+
+
+.fa-times {
+  display: none;
+}
+#completeTodo:hover .fa-times {
+  display : inline;
+}
+//
+// #incompleteTodo:hover .fa-check {
+//   display : inline;
+// }
+
+.markedComplete, .markedDelete{
+    background-color: #6fa0a8;
+    cursor: pointer;
+}
+.markedDelete{
+  i{
+    display: inline;
+  }
+}
+
+// .completeTodos:hover .ok{
+// display : none;
+// }

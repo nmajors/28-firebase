@@ -11,21 +11,28 @@
 </div>
 
 <div class="viewList">
-  <h1 class = "todoListTitle">To Do List</h1>
+  <h1 ng-show = "todosCtrl.changeView !== 'viewCompleted'" class = "todoListTitle">To Do List</h1>
+  <h1 ng-show ="todosCtrl.changeView !== 'viewIncomplete'" class = "todoListTitle">Completed Todos</h1>
   <form class = "addTodo" ng-submit ="todosCtrl.addTodo()" ng-show="todosCtrl.changeView !== 'viewCompleted'" >
     <input class = "addTodoInput" type="text" placeholder="What to do?" ng-model="todosCtrl.item">
     <input class = "addTodoInput" id="addTodoSubmit" type="submit" value="Add">
   </form>
 
-  <button type="button" name="Archive" ng-hide="todosCtrl.changeView === 'viewIncomplete'" ng-click="todosCtrl.archiveTodos()">Archive All</button>
+  <button type="button" name="Archive" id="archiveTodos" ng-hide="todosCtrl.changeView === 'viewIncomplete'" ng-click="todosCtrl.archiveTodos()"><span>Archive All</span></button>
 
-  <ul class="completedTodos"  ng-show="todosCtrl.changeView !== 'viewIncomplete'">
-    <li ng-repeat="todo in todosCtrl.todos" ng-show="todo.completed===true" ng-class="{'completed': todo.completed}"
-    ng-click="todosCtrl.toggleCompleted(todo)">{{ todo.item }}</li>
+  <ul class="completedTodos"  ng-show = "todosCtrl.changeView !== 'viewIncomplete'">
+    <li ng-repeat="todo in todosCtrl.todos" ng-show="todo.completed===true" ng-class="{'completed': todo.completed, 'markedDelete': todo.markedDelete}" id="completeTodo"
+    ng-click="todosCtrl.deleteTodo(todo)">
+    <i class="fa fa-times" aria-hidden="true"></i>
+    {{ todo.item }}</li>
   </ul>
+
   <ul class="incompleteTodos" ng-show="todosCtrl.changeView !== 'viewCompleted'">
-    <li ng-repeat="todo in todosCtrl.todos" ng-show="todo.completed===false" ng-class="{'completed': todo.completed}"
-    ng-click="todosCtrl.toggleCompleted(todo)">{{ todo.item }}</li>
+    <li ng-repeat="todo in todosCtrl.todos" ng-show="todo.completed===false" ng-class="{'completed': todo.completed, 'markedComplete': todo.markedComplete}" id="incompleteTodo"
+    ng-click="todosCtrl.toggleCompleted(todo)">
+    <i class="fa fa-square-o" ng-show="todo.markedComplete === false" aria-hidden="true"></i>
+    <i class="fa fa-check" ng-show="todo.markedComplete === true" aria-hidden="true"></i>
+    {{ todo.item }}</li>
   </ul>
 
 </div>

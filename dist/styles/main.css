@@ -2,9 +2,6 @@ body {
   color: #eee;
   font-family: Helvetica; }
 
-.completed {
-  text-decoration: line-through; }
-
 .todoList {
   border-radius: 5px;
   background-color: #256c77;
@@ -28,13 +25,15 @@ body {
     position: relative;
     top: 50%;
     left: 50%;
-    margin-top: -15px;
-    margin-left: -60px;
+    transform: translate(-50%, -50%);
     background: linear-gradient(to bottom, #afd5e0 5%, #6fa0a8 100%); }
+  .todoList .viewList #archiveTodos {
+    margin-top: 15px;
+    width: 140px;
+    height: 30px; }
   .todoList .viewList .addTodo {
     width: 90%;
-    margin: 0 10%;
-    display: inline-block; }
+    margin-left: 12%; }
     .todoList .viewList .addTodo ::-webkit-input-placeholder {
       color: #ccc; }
     .todoList .viewList .addTodo .addTodoInput {
@@ -51,15 +50,35 @@ body {
       text-decoration: none;
       text-shadow: 0 1px 16px #39828f; }
   .todoList ul {
-    margin: 20px 15px 0;
-    line-height: 1.2;
-    font-size: 1.2rem;
-    text-align: left; }
+    margin: 20px auto;
+    text-align: left;
+    list-style-type: none; }
     .todoList ul li {
-      margin-right: 25px; }
+      margin-right: 55px;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #6fa0a8;
+      line-height: 1.5;
+      padding-left: 15px; }
+      .todoList ul li i {
+        padding-right: 15px; }
     .todoList ul li:hover {
       background-color: #6fa0a8;
       cursor: pointer; }
+  .todoList .completedTodos {
+    margin-top: 0; }
+
+.fa-times {
+  display: none; }
+
+#completeTodo:hover .fa-times {
+  display: inline; }
+
+.markedComplete, .markedDelete {
+  background-color: #6fa0a8;
+  cursor: pointer; }
+
+.markedDelete i {
+  display: inline; }
 
 .chooseView {
   text-align: center;
@@ -70,7 +89,9 @@ body {
     font-size: 1.2;
     line-height: 2;
     padding: 10px;
+    border: 1px solid #afd5e0;
     border-radius: 3px;
     background: linear-gradient(to bottom, #afd5e0 5%, #6fa0a8 100%); }
   .chooseView input[type=radio]:checked + label {
-    background: #6FA0A8; }
+    background: #6FA0A8;
+    border: 1px solid #236671; }
